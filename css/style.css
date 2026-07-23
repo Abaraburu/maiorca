@@ -27,12 +27,28 @@ body {
 }
 
 .hero-content {
+    position: relative;
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     display: inline-block;
-    padding: 2rem 4rem;
+    padding: 2.5rem 4rem;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tiktok-badge-hero {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #ffffff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 2;
 }
 
 .hero h1 {
@@ -62,14 +78,126 @@ body {
 }
 
 .placeholder-card, .place-card {
-    background: var(--card-bg);
+    position: relative;
+    background: #ffffff;
     border-radius: 20px;
-    padding: 2.5rem 2rem;
+    padding: 0;
+    overflow: hidden;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.place-card-media {
+    width: 100%;
+    height: 190px;
+    background: #0b0f19;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.place-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.place-card:hover .place-card-media img {
+    transform: scale(1.06);
+}
+
+.placeholder-media {
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+}
+
+.place-card-info {
+    padding: 1.4rem 1.2rem 1.6rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.place-card-info h2 {
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+    font-size: 1.4rem;
+}
+
+.place-card-info p {
+    margin: 0;
+}
+
+/* TikTok Rating Counter Badges */
+.tiktok-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #ffffff;
+    padding: 6px 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 2;
+}
+
+.tiktok-badge:hover, .tiktok-badge-hero:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.tiktok-icon {
+    width: 16px;
+    height: 16px;
+    fill: #000000; /* Always BLACK for standard TikToks */
+    filter: none;
+}
+
+.tiktok-icon-gray {
+    fill: #888888; /* Always GRAY for comment TikToks */
+    filter: none;
+    opacity: 0.85;
+}
+
+.comment-tag .tiktok-icon-gray {
+    width: 14px;
+    height: 14px;
+    vertical-align: text-bottom;
+    margin-right: 3px;
+    fill: currentColor;
+    opacity: 0.85;
+}
+
+.tiktok-counter-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #2d3748;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tiktok-counter-bar.comment-bar {
+    background: #2d3748;
+    color: white;
 }
 
 .place-card:hover {
@@ -144,3 +272,159 @@ h2 {
     font-weight: 600;
     margin-top: 0.5rem;
 }
+
+/* Stili per la Galleria Fotografica & TikTok Unificata */
+.photo-gallery {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.gallery-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+.gallery-media-wrap {
+    width: 100%;
+    height: 320px;
+    background: #0b0f19;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-media-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Foto visibili nella loro interezza non tagliate */
+    background: #090d16;
+    cursor: zoom-in;
+}
+
+.gallery-media-wrap.video-placeholder {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    flex-direction: column;
+    gap: 10px;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.gallery-caption {
+    padding: 0.85rem 1rem;
+    font-size: 0.85rem;
+    color: #475569;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+}
+
+.tiktok-card-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #111827;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    padding: 0.95rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.2s ease;
+    margin-top: auto;
+}
+
+.tiktok-card-btn:hover {
+    background: #2563eb;
+    color: #ffffff !important;
+}
+
+/* Lightbox Modal Schermo Intero */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+    box-sizing: border-box;
+    cursor: zoom-out;
+}
+
+.lightbox-content {
+    max-width: 94vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10001;
+    transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+    color: #fe2c55;
+}
+
+.lightbox-caption {
+    margin-top: 1rem;
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    text-align: center;
+    max-width: 800px;
+}
+
