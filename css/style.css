@@ -1,101 +1,227 @@
 :root {
-    --primary-color: #0077B6; /* Ocean blue */
-    --secondary-color: #00B4D8;
-    --accent-color: #FFB703; /* Sun yellow */
-    --background: #f8f9fa;
-    --text-main: #2b2d42;
-    --card-bg: rgba(255, 255, 255, 0.9);
+    --primary-color: #0284c7; /* Vibrant Ocean Blue */
+    --primary-dark: #0f172a;  /* Deep Navy */
+    --secondary-color: #06b6d4; /* Turquoise Teal */
+    --accent-color: #f59e0b; /* Golden Sand Accent */
+    --background: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --card-bg: #ffffff;
+    --card-border: rgba(226, 232, 240, 0.8);
+    --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 20px 35px -10px rgba(15, 23, 42, 0.16);
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --radius-pill: 9999px;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--background);
     color: var(--text-main);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
 .hero {
-    background: linear-gradient(135deg, rgba(0, 119, 182, 0.9), rgba(0, 180, 216, 0.9)), url('https://images.unsplash.com/photo-1534008897995-27a23e859048?q=80&w=2000&auto=format&fit=crop');
+    position: relative;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.82), rgba(2, 132, 199, 0.75)), url('https://images.unsplash.com/photo-1534008897995-27a23e859048?q=80&w=2000&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
     color: white;
     text-align: center;
-    padding: 6rem 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 5rem 1.5rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
 }
 
 .hero-content {
     position: relative;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     display: inline-block;
-    padding: 2.5rem 4rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.tiktok-badge-hero {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: #ffffff;
-    padding: 6px 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 2;
+    padding: 2.5rem 3.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
 }
 
 .hero h1 {
-    font-size: 4rem;
+    font-size: 3.8rem;
     margin: 0;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: -1px;
+    background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     opacity: 0.95;
     margin-top: 1rem;
     font-weight: 300;
+    color: #f1f5f9;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 0 2rem;
+    max-width: 1280px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
 }
 
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-title::after {
+    content: '';
+    flex-grow: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), transparent);
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   Search Bar & Category Filters
+   ========================================================================== */
+.search-filter-wrapper {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.search-box {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.9rem 1.2rem 0.9rem 3rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-main);
+    box-shadow: var(--shadow-sm);
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.search-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+}
+
+.search-icon-inside {
+    position: absolute;
+    left: 1.1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    pointer-events: none;
+}
+
+.category-chips {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.chip-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ffffff;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    padding: 0.55rem 1.1rem;
+    border-radius: var(--radius-pill);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chip-btn:hover {
+    background: #f1f5f9;
+    color: var(--primary-color);
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+}
+
+.chip-btn.active {
+    background: var(--primary-dark);
+    color: #ffffff;
+    border-color: var(--primary-dark);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+}
+
+.chip-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ==========================================================================
+   Places Grid & Cards
+   ========================================================================== */
 .places-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr));
     gap: 2rem;
 }
 
-.placeholder-card, .place-card {
+.place-card {
     position: relative;
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 0;
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--card-border);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.35s ease;
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+
+.place-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(2, 132, 199, 0.3);
 }
 
 .place-card-media {
     width: 100%;
-    height: 190px;
-    background: #0b0f19;
+    height: 200px;
+    background: #0f172a;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -107,334 +233,112 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.5s ease;
 }
 
 .place-card:hover .place-card-media img {
-    transform: scale(1.06);
+    transform: scale(1.08);
 }
 
 .placeholder-media {
-    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    background: linear-gradient(135deg, #0f172a, #0284c7);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .place-card-info {
-    padding: 1.4rem 1.2rem 1.6rem 1.2rem;
+    padding: 1.4rem 1.2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-between;
     flex-grow: 1;
 }
 
 .place-card-info h2 {
-    margin-top: 0;
-    margin-bottom: 0.3rem;
-    font-size: 1.4rem;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    line-height: 1.3;
 }
 
-.place-card-info p {
-    margin: 0;
+/* Category Badge (Zero Emoji) */
+.category-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f1f5f9;
+    color: #0284c7;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
-/* TikTok Rating Counter Badges */
+.category-icon {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+/* TikTok Badge & Hero Badge Bubble */
+.tiktok-badge, .tiktok-badge-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    transition: transform 0.2s ease;
+}
+
 .tiktok-badge {
     position: absolute;
     top: 14px;
     right: 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: #ffffff;
-    padding: 6px 10px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     z-index: 2;
+}
+
+.tiktok-badge-hero {
+    margin-bottom: 0.8rem;
 }
 
 .tiktok-badge:hover, .tiktok-badge-hero:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    transform: scale(1.06);
+}
+
+.hero-content .category-tag {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .tiktok-icon {
-    width: 16px;
-    height: 16px;
-    fill: #000000; /* Always BLACK for standard TikToks */
-    filter: none;
+    width: 15px;
+    height: 15px;
+    fill: #000000;
 }
 
 .tiktok-icon-gray {
-    fill: #888888; /* Always GRAY for comment TikToks */
-    filter: none;
+    fill: #64748b;
     opacity: 0.85;
 }
 
-.comment-tag .tiktok-icon-gray {
-    width: 14px;
-    height: 14px;
-    vertical-align: text-bottom;
-    margin-right: 3px;
-    fill: currentColor;
-    opacity: 0.85;
-}
-
-.tiktok-counter-bar {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #2d3748;
-    color: white;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.tiktok-counter-bar.comment-bar {
-    background: #2d3748;
-    color: white;
-}
-
-.place-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-}
-
-h2 {
-    color: var(--primary-color);
-    margin-top: 0;
-}
-
-/* Aggiunte per le pagine di dettaglio */
-
-.back-link {
-    display: inline-block;
-    margin-bottom: 2rem;
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-.back-link:hover {
-    color: var(--secondary-color);
-}
-
-.place-details {
-    background: white;
-    border-radius: 20px;
-    padding: 3rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.tiktok-links {
-    list-style: none;
-    padding: 0;
-}
-
-.tiktok-links li {
-    margin-bottom: 1rem;
-}
-
-.tiktok-links a {
-    display: inline-block;
-    background: #000;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.3s;
-}
-
-.tiktok-links a:hover {
-    background: #333;
-}
-
-.notes-section {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid #eee;
-}
-
-.comment-tag {
-    display: inline-block;
-    background: var(--accent-color);
-    color: white;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-top: 0.5rem;
-}
-
-/* Stili per la Galleria Fotografica & TikTok Unificata */
-.photo-gallery {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid #eee;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.gallery-card {
-    position: relative;
-    background: #ffffff;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.gallery-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
-}
-
-.gallery-media-wrap {
-    width: 100%;
-    height: 320px;
-    background: #0b0f19;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-}
-
-.gallery-media-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Foto visibili nella loro interezza non tagliate */
-    background: #090d16;
-    cursor: zoom-in;
-}
-
-.gallery-media-wrap.video-placeholder {
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-    flex-direction: column;
-    gap: 10px;
-}
-
-.play-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 56px;
-    height: 56px;
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(4px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    pointer-events: none;
-    z-index: 2;
-}
-
-.gallery-caption {
-    padding: 0.85rem 1rem;
-    font-size: 0.85rem;
-    color: #475569;
-    background: #f8fafc;
-    border-top: 1px solid #e2e8f0;
-}
-
-.tiktok-card-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: #111827;
-    color: #ffffff !important;
-    text-decoration: none !important;
-    padding: 0.95rem 1.2rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    transition: background 0.2s ease;
-    margin-top: auto;
-}
-
-.tiktok-card-btn:hover {
-    background: #2563eb;
-    color: #ffffff !important;
-}
-
-/* Lightbox Modal Schermo Intero */
-.lightbox-modal {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.92);
-    backdrop-filter: blur(10px);
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 2rem;
-    box-sizing: border-box;
-    cursor: zoom-out;
-}
-
-.lightbox-content {
-    max-width: 94vw;
-    max-height: 88vh;
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: #ffffff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    line-height: 1;
-    z-index: 10001;
-    transition: color 0.2s;
-}
-
-.lightbox-close:hover {
-    color: #fe2c55;
-}
-
-.lightbox-caption {
-    margin-top: 1rem;
-    color: #e2e8f0;
-    font-size: 0.95rem;
-    text-align: center;
-    max-width: 800px;
-}
-
-/* Stili Sistema Archiviazione Spiagge & Luoghi */
+/* Archive Tabs & Controls */
 .archive-nav-tabs {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
 }
 
@@ -445,13 +349,13 @@ h2 {
     background: #ffffff;
     color: #475569;
     border: 1px solid #e2e8f0;
-    padding: 0.75rem 1.5rem;
-    border-radius: 30px;
+    padding: 0.7rem 1.4rem;
+    border-radius: var(--radius-pill);
     font-family: inherit;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-sm);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -466,7 +370,7 @@ h2 {
     background: var(--primary-color);
     color: #ffffff;
     border-color: var(--primary-color);
-    box-shadow: 0 6px 20px rgba(0, 119, 182, 0.25);
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
 }
 
 .archive-tab-btn.active .tab-badge {
@@ -481,10 +385,8 @@ h2 {
     border-radius: 12px;
     font-size: 0.8rem;
     font-weight: 700;
-    transition: all 0.2s ease;
 }
 
-/* Pulsante Archiviazione sulle Card */
 .place-archive-btn {
     position: absolute;
     top: 14px;
@@ -493,12 +395,13 @@ h2 {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     color: #334155;
     padding: 6px 12px;
-    border-radius: 20px;
+    border-radius: var(--radius-pill);
     font-family: inherit;
     font-size: 0.8rem;
     font-weight: 600;
@@ -512,7 +415,6 @@ h2 {
     color: #ffffff;
     border-color: var(--primary-color);
     transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0, 119, 182, 0.3);
 }
 
 .place-archive-btn.is-archived {
@@ -522,92 +424,1014 @@ h2 {
 }
 
 .place-archive-btn.is-archived:hover {
-    background: #059669;
+    background: #10b981;
     color: #ffffff;
-    border-color: #059669;
-    box-shadow: 0 6px 16px rgba(5, 150, 105, 0.3);
+    border-color: #10b981;
 }
 
-.card-transitioning {
-    opacity: 0;
-    transform: scale(0.92);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-/* Stato Vuoto per l'Archivio */
 .archive-empty-state {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 5rem 2rem;
+    padding: 4rem 2rem;
     margin: 2rem 0;
     background: #ffffff;
-    border-radius: 24px;
-    border: 1px stroke #e2e8f0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border-radius: var(--radius-lg);
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--shadow-sm);
     text-align: center;
     color: #64748b;
     gap: 1rem;
+    grid-column: 1 / -1;
 }
 
-.archive-empty-state svg {
-    color: #94a3b8;
-    stroke-width: 1.5;
-}
-
-.archive-empty-state h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #1e293b;
+/* Detail Page Header & Back Button */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2rem;
+    background: #ffffff;
+    color: var(--primary-dark);
+    padding: 0.65rem 1.3rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid #e2e8f0;
+    text-decoration: none;
     font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s ease;
 }
 
-.archive-empty-state p {
-    margin: 0;
-    max-width: 480px;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #64748b;
+.back-link:hover {
+    background: var(--primary-dark);
+    color: #ffffff;
+    border-color: var(--primary-dark);
+    transform: translateX(-4px);
 }
 
-/* Pulsante nelle Pagine Dettaglio */
+.back-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.25s ease;
+}
+
+.back-link:hover .back-icon {
+    transform: translateX(-2px);
+}
+
+.place-details {
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--card-border);
+}
+
 .detail-archive-action {
-    margin-bottom: 1.8rem;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
 }
 
 .detail-archive-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 0.8rem 1.4rem;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
     background: #f8fafc;
-    color: #334155;
+    color: var(--text-main);
     border: 1px solid #cbd5e1;
-    border-radius: 12px;
     font-family: inherit;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 600;
     cursor: pointer;
+    box-shadow: var(--shadow-sm);
     transition: all 0.2s ease;
+}
+
+.detail-archive-btn .btn-svg-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
 }
 
 .detail-archive-btn:hover {
     background: var(--primary-color);
     color: #ffffff;
     border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
 }
 
 .detail-archive-btn.is-archived {
-    background: #ecfdf5;
-    color: #047857;
-    border-color: #a7f3d0;
+    background: #f1f5f9;
+    color: #475569;
+    border-color: #cbd5e1;
 }
 
 .detail-archive-btn.is-archived:hover {
-    background: #059669;
+    background: #10b981;
     color: #ffffff;
-    border-color: #059669;
+    border-color: #10b981;
 }
+
+.notes-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+.notes-section h2 {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Gallery & Cards in Detail */
+.photo-gallery {
+    margin-top: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.gallery-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.gallery-media-wrap {
+    width: 100%;
+    height: 320px;
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-media-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #090d16;
+    cursor: zoom-in;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.tiktok-card-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--primary-dark);
+    color: #ffffff !important;
+    text-decoration: none !important;
+    padding: 0.85rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s ease;
+    margin-top: auto;
+}
+
+.tiktok-card-btn:hover {
+    background: var(--primary-color);
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.94);
+    backdrop-filter: blur(12px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.lightbox-content {
+    max-width: 92vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10001;
+    transition: color 0.2s ease;
+}
+
+.lightbox-close:hover {
+    color: #ef4444;
+}
+
+/* ==========================================================================
+   Prevent Horizontal Overflow on All Devices
+   ========================================================================== */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Touch-Friendly: Ensure minimum tap target 44px */
+.chip-btn,
+.back-link,
+.maps-btn-action,
+.tiktok-search-btn,
+.tiktok-search-btn-secondary,
+.detail-archive-btn,
+.place-archive-btn {
+    min-height: 44px;
+}
+
+/* ==========================================================================
+   Tablet — max-width: 768px
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero {
+        padding: 3rem 1rem;
+    }
+    .hero-content {
+        padding: 1.8rem 1.5rem;
+    }
+    .hero h1 {
+        font-size: 2.4rem;
+        letter-spacing: -0.5px;
+    }
+    .hero p {
+        font-size: 1.1rem;
+    }
+    .container {
+        padding: 0 1rem;
+        margin: 2rem auto;
+    }
+    /* Section title override (inline style has !important sizing) */
+    .section-title {
+        font-size: 1.8rem !important;
+    }
+    .places-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.25rem;
+    }
+    .place-card-media {
+        height: 180px;
+    }
+    .place-card-info {
+        padding: 1.1rem 1rem;
+    }
+    .place-card-info h2 {
+        font-size: 1.2rem;
+    }
+    .place-details {
+        padding: 1.5rem;
+    }
+    /* Category chips — horizontal scroll */
+    .category-chips {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+    }
+    .category-chips::-webkit-scrollbar {
+        display: none;
+    }
+    .chip-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+    /* Gallery */
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
+    }
+    .gallery-media-wrap {
+        height: 260px;
+    }
+    /* Maps */
+    .maps-grid {
+        grid-template-columns: 1fr;
+    }
+    .maps-photos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+    .maps-header-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .maps-action-buttons {
+        width: 100%;
+    }
+    .maps-btn-action {
+        flex: 1;
+        justify-content: center;
+    }
+    .maps-iframe-card {
+        height: 300px;
+    }
+    /* Lightbox touch-friendly */
+    .lightbox-close {
+        top: 16px;
+        right: 16px;
+        font-size: 42px;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .lightbox-content {
+        max-width: 96vw;
+        max-height: 80vh;
+        border-radius: 8px;
+    }
+}
+
+/* ==========================================================================
+   Mobile — max-width: 576px
+   ========================================================================== */
+@media (max-width: 576px) {
+    .hero {
+        padding: 2.5rem 0.75rem !important;
+    }
+    .hero-content {
+        padding: 1.5rem 1.2rem;
+        border-radius: 16px;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+        margin-top: 0.75rem;
+    }
+    .container {
+        padding: 0 0.75rem;
+        margin: 1.5rem auto;
+    }
+    .section-title {
+        font-size: 1.5rem !important;
+        padding-bottom: 0.4rem !important;
+        margin-bottom: 1.25rem !important;
+    }
+    .search-box {
+        max-width: 100%;
+    }
+    .search-input {
+        padding: 0.8rem 1rem 0.8rem 2.6rem;
+        font-size: 0.95rem;
+    }
+    .search-icon-inside {
+        left: 0.85rem;
+    }
+    .places-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+    .place-card {
+        border-radius: 14px;
+    }
+    .place-card:hover {
+        transform: translateY(-4px);
+    }
+    .place-card-media {
+        height: 140px;
+    }
+    .place-card-info {
+        padding: 0.85rem 0.75rem;
+    }
+    .place-card-info h2 {
+        font-size: 1rem;
+        margin-bottom: 0.35rem;
+    }
+    .category-tag {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+    }
+    .category-icon {
+        width: 13px;
+        height: 13px;
+    }
+    /* TikTok badge on cards */
+    .tiktok-badge {
+        top: 8px;
+        right: 8px;
+        padding: 4px 8px;
+        gap: 3px;
+    }
+    .tiktok-icon {
+        width: 12px;
+        height: 12px;
+    }
+    /* Detail pages */
+    .place-details {
+        padding: 1.2rem;
+        border-radius: 16px;
+    }
+    .back-link {
+        padding: 0.55rem 1rem;
+        font-size: 0.88rem;
+        margin-bottom: 1.25rem;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+    .gallery-media-wrap {
+        height: 240px;
+    }
+    .tiktok-card-btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.88rem;
+    }
+    /* Maps section mobile */
+    .maps-section {
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+    }
+    .maps-header-wrapper h2 {
+        font-size: 1.15rem;
+    }
+    .maps-media-wrap {
+        height: 220px;
+    }
+    .maps-iframe-card {
+        height: 250px;
+    }
+    .maps-photos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.65rem;
+    }
+    .maps-photo-media {
+        height: 160px;
+    }
+    /* TikTok search buttons */
+    .tiktok-search-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.65rem 1rem;
+        font-size: 0.88rem;
+    }
+    .gallery-header-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    .tiktok-search-btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    /* Notes section */
+    .notes-section {
+        margin-top: 2rem;
+        padding-top: 1.25rem;
+    }
+    .notes-section h2 {
+        font-size: 1.2rem;
+    }
+    /* Comment tag */
+    .comment-tag {
+        font-size: 0.72rem;
+    }
+    /* Archive empty state */
+    .archive-empty-state {
+        padding: 2.5rem 1.25rem;
+    }
+    /* Footer */
+    footer {
+        padding: 1.5rem 0.75rem !important;
+        font-size: 0.85rem;
+    }
+    /* Lightbox */
+    .lightbox-modal {
+        padding: 1rem;
+    }
+    .lightbox-close {
+        top: 10px;
+        right: 12px;
+        font-size: 36px;
+    }
+    .lightbox-content {
+        max-width: 100vw;
+        max-height: 78vh;
+        border-radius: 6px;
+    }
+}
+
+/* ==========================================================================
+   Small Phone — max-width: 400px
+   ========================================================================== */
+@media (max-width: 400px) {
+    .hero {
+        padding: 2rem 0.5rem !important;
+    }
+    .hero-content {
+        padding: 1.2rem 1rem;
+        border-radius: 14px;
+    }
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+    .hero p {
+        font-size: 0.92rem;
+    }
+    .places-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+    }
+    .place-card-media {
+        height: 120px;
+    }
+    .place-card-info {
+        padding: 0.65rem 0.6rem;
+    }
+    .place-card-info h2 {
+        font-size: 0.9rem;
+    }
+    .category-tag {
+        font-size: 0.7rem;
+        padding: 2px 6px;
+    }
+    .tiktok-badge {
+        top: 6px;
+        right: 6px;
+        padding: 3px 6px;
+        gap: 2px;
+    }
+    .tiktok-icon {
+        width: 10px;
+        height: 10px;
+    }
+    .chip-btn {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.82rem;
+    }
+    .gallery-media-wrap {
+        height: 200px;
+    }
+    .maps-photo-media {
+        height: 130px;
+    }
+    .maps-media-wrap {
+        height: 180px;
+    }
+    .maps-iframe-card {
+        height: 220px;
+    }
+    .section-title {
+        font-size: 1.3rem !important;
+    }
+}
+
+/* ==========================================================================
+   TikTok Search Action Buttons
+   ========================================================================== */
+.hero-search-action {
+    margin-top: 1.25rem;
+    display: flex;
+    justify-content: center;
+}
+
+.tiktok-search-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: var(--radius-pill);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+}
+
+.tiktok-search-btn:hover {
+    background: #000000;
+    color: #ffffff;
+    border-color: #fe2c55;
+    box-shadow: 0 6px 22px rgba(254, 44, 85, 0.45), 0 0 14px rgba(0, 242, 254, 0.45);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.tiktok-search-btn .tiktok-btn-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.tiktok-search-btn .search-btn-icon {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+.tiktok-search-btn .external-icon {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    flex-shrink: 0;
+    opacity: 0.85;
+}
+
+/* Secondary TikTok Search Button in Gallery Header */
+.gallery-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.gallery-header-wrapper h2 {
+    margin: 0;
+}
+
+.tiktok-search-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    background: #f8fafc;
+    color: var(--primary-dark);
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-pill);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-sm);
+}
+
+.tiktok-search-btn-secondary:hover {
+    background: #000000;
+    color: #ffffff;
+    border-color: #fe2c55;
+    box-shadow: 0 4px 16px rgba(254, 44, 85, 0.35);
+    transform: translateY(-2px);
+}
+
+.tiktok-search-btn-secondary .tiktok-btn-icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.tiktok-search-btn-secondary .external-icon {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+
+
+/* ==========================================================================
+   Google Maps & Satellite Section
+   ========================================================================== */
+.maps-section {
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.maps-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.maps-header-wrapper h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.maps-header-wrapper h2 svg, .maps-header-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.maps-action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.maps-btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    background: #f8fafc;
+    color: var(--primary-dark);
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-pill);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-sm);
+}
+
+.maps-btn-action:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+    transform: translateY(-2px);
+}
+
+.maps-btn-action svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+.maps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    gap: 1.5rem;
+}
+
+.maps-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.maps-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.maps-media-wrap {
+    width: 100%;
+    height: 280px;
+    background: #0f172a;
+    position: relative;
+    overflow: hidden;
+}
+
+.maps-media-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: transform 0.4s ease;
+}
+
+.maps-card:hover .maps-media-wrap img {
+    transform: scale(1.05);
+}
+
+.maps-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.maps-badge svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+}
+
+.maps-iframe-card {
+    grid-column: 1 / -1;
+    height: 380px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #e2e8f0;
+    position: relative;
+}
+
+.maps-iframe-card iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+
+/* User Review Photos Subsection */
+.maps-user-photos-wrapper {
+    margin-bottom: 2rem;
+}
+
+.maps-satellite-wrapper {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px dashed #cbd5e1;
+}
+
+.maps-user-photos-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.maps-user-photos-title span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.maps-user-photos-title svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary-color);
+}
+
+.maps-photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
+    gap: 1rem;
+}
+
+.maps-photo-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.maps-photo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.maps-photo-media {
+    width: 100%;
+    height: 220px;
+    background: #0f172a;
+    position: relative;
+    overflow: hidden;
+}
+
+.maps-photo-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: transform 0.4s ease;
+}
+
+.maps-photo-card:hover .maps-photo-media img {
+    transform: scale(1.06);
+}
+
+.maps-photo-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #ffffff;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.maps-photo-badge svg {
+    width: 12px;
+    height: 12px;
+    stroke: currentColor;
+}
+
+.maps-disclaimer-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    background: #fefce8;
+    border: 1px solid #fef08a;
+    border-radius: var(--radius-md);
+    padding: 0.8rem 1.1rem;
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    color: #713f12;
+    line-height: 1.45;
+    box-shadow: var(--shadow-sm);
+}
+
+.maps-disclaimer-note svg {
+    width: 18px;
+    height: 18px;
+    stroke: #ca8a04;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+
 
 

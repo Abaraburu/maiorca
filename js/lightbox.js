@@ -23,9 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
             img.style.cursor = 'zoom-in';
             img.onclick = (e) => {
                 e.stopPropagation();
+                e.preventDefault();
                 modal.style.display = 'flex';
                 modalImg.src = img.src;
                 modalCaption.textContent = img.alt || '';
+                // Prevent body scroll while lightbox is open (mobile)
+                document.body.style.overflow = 'hidden';
             };
         });
     }
@@ -34,11 +37,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closeModal = () => {
         modal.style.display = 'none';
+        // Restore body scroll
+        document.body.style.overflow = '';
     };
 
-    modal.onclick = closeModal;
-    
+    // Close on tapping the backdrop (not the image)
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal || e.target.classList.contains('lightbox-close')) {
+            closeModal();
+        }
+    });
+
+    // Close on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
     });
+
+    // Swipe down to close (mobile gesture)
+    let touchStartY = 0;
+    modal.addEventListener('touchstart', (e) => {
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    modal.addEventListener('touchend', (e) => {
+        const touchEndY = e.changedTouches[0].screenY;
+        const swipeDistance = touchEndY - touchStartY;
+        // Close if swiped down more than 80px
+        if (swipeDistance > 80) {
+            closeModal();
+        }
+    }, { passive: true });
 });

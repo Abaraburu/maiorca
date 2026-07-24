@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maiorca: Guida Interattiva</title>
+    <meta name="description" content="Guida interattiva a Maiorca: scopri spiagge da sogno, borghi storici, attrazioni e sapori locali con foto, video TikTok e mappe.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +20,23 @@
     
     <main class="container">
         <h2 class="section-title" style="font-size: 2.5rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem; margin-bottom: 2rem;">Luoghi da Esplorare</h2>
+        
+        <div class="search-filter-wrapper" id="search-filter-wrapper">
+            <div class="search-box">
+                <svg class="search-icon-inside" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="search-input" class="search-input" placeholder="Cerca una spiaggia, borgo o attrazione..." aria-label="Cerca nel sito">
+            </div>
+            <div class="category-chips" id="category-chips">
+                <button class="chip-btn active" data-category="all" type="button">Tutti i Luoghi</button>
+                <button class="chip-btn" data-category="spiaggia" type="button"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiagge</button>
+                <button class="chip-btn" data-category="borgo" type="button"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 10a2 2 0 0 1 4 0v11"/></svg> Borghi & Porti</button>
+                <button class="chip-btn" data-category="attrazione" type="button"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Attrazioni</button>
+                <button class="chip-btn" data-category="mercato" type="button"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Mercati</button>
+                <button class="chip-btn" data-category="citta" type="button"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="6" x2="9.01" y2="6"/><line x1="15" y1="6" x2="15.01" y2="6"/><line x1="9" y1="10" x2="9.01" y2="10"/><line x1="15" y1="10" x2="15.01" y2="10"/><line x1="9" y1="14" x2="9.01" y2="14"/><line x1="15" y1="14" x2="15.01" y2="14"/><line x1="9" y1="18" x2="9.01" y2="18"/><line x1="15" y1="18" x2="15.01" y2="18"/></svg> Città</button>
+                <button class="chip-btn" data-category="panorami" type="button"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Panorami</button>
+            </div>
+        </div>
+        
         <section class="places-grid">
             <!-- Luoghi -->
             <a href="cala_pi.html" style="text-decoration: none; color: inherit;">
@@ -27,7 +45,7 @@
                     <div class="place-card-media"><img src="images/cala_pi/tiktok_7660088999733710113_8.jpg" alt="Cala Pi" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Cala Pi</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -37,7 +55,7 @@
                     <div class="place-card-media"><img src="images/es_trenc/tiktok_7643479093844970785_11.jpg" alt="Es Trenc" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Es Trenc</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -47,7 +65,7 @@
                     <div class="place-card-media"><img src="images/calo_des_moro/tiktok_7643479093844970785_7.jpg" alt="Calò Des Moro" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Calò Des Moro</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -57,7 +75,7 @@
                     <div class="place-card-media"><img src="images/port_de_cala_figuera/tiktok_7662397160293453088_9.jpg" alt="Port de Cala Figuera" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Port de Cala Figuera</h2>
-                        <p>Porto/Borgo ⛵</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 10a2 2 0 0 1 4 0v11"/></svg> Porto/Borgo</span>
                     </div>
                 </div>
             </a>
@@ -67,7 +85,7 @@
                     <div class="place-card-media"><img src="images/mercado_de_santanyi/video_7647980975086947606.jpg" alt="Mercado de Santanyí" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Mercado de Santanyí</h2>
-                        <p>Mercato 🛍️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Mercato</span>
                     </div>
                 </div>
             </a>
@@ -77,7 +95,7 @@
                     <div class="place-card-media"><img src="images/samarador/video_7647980975086947606.jpg" alt="S'Amarador" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>S'Amarador</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -87,7 +105,7 @@
                     <div class="place-card-media"><img src="images/cala_mondrago/video_7647980975086947606.jpg" alt="Cala Mondragò" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Cala Mondragò</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -97,7 +115,7 @@
                     <div class="place-card-media"><img src="images/cala_esmeralda/video_7647980975086947606.jpg" alt="Cala Esmeralda" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Cala Esmeralda</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -107,7 +125,7 @@
                     <div class="place-card-media"><img src="images/portocolom/video_7647980975086947606.jpg" alt="Portocolom" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Portocolom</h2>
-                        <p>Porto/Borgo ⛵</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 10a2 2 0 0 1 4 0v11"/></svg> Porto/Borgo</span>
                     </div>
                 </div>
             </a>
@@ -117,7 +135,7 @@
                     <div class="place-card-media"><img src="images/cuevas_del_hams/video_7647980975086947606.jpg" alt="Cuevas del Hams" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Cuevas del Hams</h2>
-                        <p>Attrazione 🏛️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Attrazione</span>
                     </div>
                 </div>
             </a>
@@ -127,7 +145,7 @@
                     <div class="place-card-media"><img src="images/playa_de_muro/video_7647980975086947606.jpg" alt="Playa de Muro" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Playa de Muro</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -137,7 +155,7 @@
                     <div class="place-card-media"><img src="images/soller/tiktok_7643479093844970785_6.jpg" alt="Sòller" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Sòller</h2>
-                        <p>Borgo Storico 🚂</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 10a2 2 0 0 1 4 0v11"/></svg> Borgo Storico</span>
                     </div>
                 </div>
             </a>
@@ -147,7 +165,7 @@
                     <div class="place-card-media"><img src="images/valldemossa/tiktok_7643479093844970785_3.jpg" alt="Valldemossa" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Valldemossa</h2>
-                        <p>Borgo Storico 🏘️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 10a2 2 0 0 1 4 0v11"/></svg> Borgo Storico</span>
                     </div>
                 </div>
             </a>
@@ -157,7 +175,7 @@
                     <div class="place-card-media"><img src="images/katmandu_park/video_7647980975086947606.jpg" alt="Katmandu Park" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Katmandu Park</h2>
-                        <p>Parco Divertimenti 🎢</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Parco Divertimenti</span>
                     </div>
                 </div>
             </a>
@@ -167,7 +185,7 @@
                     <div class="place-card-media"><img src="images/camp_de_mar/video_7647980975086947606.jpg" alt="Camp de Mar" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Camp de Mar</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -177,7 +195,7 @@
                     <div class="place-card-media"><img src="images/palma_de_mallorca/tiktok_7643479093844970785_1.jpg" alt="Palma de Mallorca" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Palma de Mallorca</h2>
-                        <p>Città 🌆</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="6" x2="9.01" y2="6"/><line x1="15" y1="6" x2="15.01" y2="6"/><line x1="9" y1="10" x2="9.01" y2="10"/><line x1="15" y1="10" x2="15.01" y2="10"/><line x1="9" y1="14" x2="9.01" y2="14"/><line x1="15" y1="14" x2="15.01" y2="14"/><line x1="9" y1="18" x2="9.01" y2="18"/><line x1="15" y1="18" x2="15.01" y2="18"/></svg> Città</span>
                     </div>
                 </div>
             </a>
@@ -187,7 +205,7 @@
                     <div class="place-card-media"><img src="images/formentor/tiktok_7643479093844970785_2.jpg" alt="Formentor" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Formentor</h2>
-                        <p>Punto Panoramico 🌄</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Punto Panoramico</span>
                     </div>
                 </div>
             </a>
@@ -197,7 +215,7 @@
                     <div class="place-card-media"><img src="images/pollenca/video_7647980975086947606.jpg" alt="Pollença" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Pollença</h2>
-                        <p>Borgo Storico 🏘️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 10a2 2 0 0 1 4 0v11"/></svg> Borgo Storico</span>
                         <p class="comment-tag"><svg class="tiktok-icon tiktok-icon-gray" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-2.89 2.892 2.895 2.895 0 0 1-2.895-2.892 2.896 2.896 0 0 1 2.895-2.892c.32 0 .633.05.928.146V9.432a6.336 6.336 0 0 0-.928-.07 6.338 6.338 0 1 0 6.338 6.338V8.128a8.219 8.219 0 0 0 4.887 1.572V6.262a4.814 4.814 0 0 1-1.12-.576z"/></svg> Da Commenti TikTok</p>
                     </div>
                 </div>
@@ -208,7 +226,7 @@
                     <div class="place-card-media"><img src="images/alcudia/tiktok_7643479093844970785_5.jpg" alt="Alcudia" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Alcudia</h2>
-                        <p>Borgo Storico 🏘️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 10a2 2 0 0 1 4 0v11"/></svg> Borgo Storico</span>
                     </div>
                 </div>
             </a>
@@ -218,7 +236,7 @@
                     <div class="place-card-media"><img src="images/cala_romantica/tiktok_7660088999733710113_3.jpg" alt="Cala Romàntica" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Cala Romàntica</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -228,7 +246,7 @@
                     <div class="place-card-media"><img src="images/cala_varques/tiktok_7660088999733710113_4.jpg" alt="Cala Varques" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Cala Varques</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -238,7 +256,7 @@
                     <div class="place-card-media"><img src="images/cala_llombards/tiktok_7660088999733710113_5.jpg" alt="Cala Llombards" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Cala Llombards</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -248,7 +266,7 @@
                     <div class="place-card-media"><img src="images/cala_dor/tiktok_7660088999733710113_1.jpg" alt="Cala d'Or" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Cala d'Or</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -258,7 +276,7 @@
                     <div class="place-card-media"><img src="images/sa_calobra/video_7653543462012308769.jpg" alt="Sa Calobra" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Sa Calobra</h2>
-                        <p>Spiaggia/Natura 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia/Natura</span>
                     </div>
                 </div>
             </a>
@@ -268,7 +286,7 @@
                     <div class="place-card-media"><img src="images/grotte_del_drago/tiktok_7643479093844970785_10.jpg" alt="Grotte del Drago" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Grotte del Drago</h2>
-                        <p>Attrazione 🏛️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Attrazione</span>
                     </div>
                 </div>
             </a>
@@ -278,7 +296,7 @@
                     <div class="place-card-media"><img src="images/cala_son_gotleu/video_7662058906192973089.jpg" alt="Cala Son Gotleu" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Cala Son Gotleu</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                         <p class="comment-tag"><svg class="tiktok-icon tiktok-icon-gray" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-2.89 2.892 2.895 2.895 0 0 1-2.895-2.892 2.896 2.896 0 0 1 2.895-2.892c.32 0 .633.05.928.146V9.432a6.336 6.336 0 0 0-.928-.07 6.338 6.338 0 1 0 6.338 6.338V8.128a8.219 8.219 0 0 0 4.887 1.572V6.262a4.814 4.814 0 0 1-1.12-.576z"/></svg> Da Commenti TikTok</p>
                     </div>
                 </div>
@@ -286,10 +304,10 @@
             <a href="cala_major.html" style="text-decoration: none; color: inherit;">
                 <div class="place-card">
                     <div class="tiktok-badge" title="1 TikTok"><svg class="tiktok-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-2.89 2.892 2.895 2.895 0 0 1-2.895-2.892 2.896 2.896 0 0 1 2.895-2.892c.32 0 .633.05.928.146V9.432a6.336 6.336 0 0 0-.928-.07 6.338 6.338 0 1 0 6.338 6.338V8.128a8.219 8.219 0 0 0 4.887 1.572V6.262a4.814 4.814 0 0 1-1.12-.576z"/></svg></div>
-                    <div class="place-card-media placeholder-media"><span style="font-size:2.5rem;">🏖️</span></div>
+                    <div class="place-card-media placeholder-media"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/></svg></div>
                     <div class="place-card-info">
                         <h2>Cala Major</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -299,7 +317,7 @@
                     <div class="place-card-media"><img src="images/cala_santanyi/tiktok_7647481931394813202_8.jpg" alt="Cala Santanyí" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Cala Santanyí</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -309,7 +327,7 @@
                     <div class="place-card-media"><img src="images/cala_llamp/tiktok_7647481931394813202_1.jpg" alt="Cala Llamp" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Cala Llamp</h2>
-                        <p>Spiaggia 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia</span>
                     </div>
                 </div>
             </a>
@@ -319,7 +337,7 @@
                     <div class="place-card-media"><img src="images/cala_en_brut/video_7655376525449104662.jpg" alt="Cala en Brut" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Cala en Brut</h2>
-                        <p>Spiaggia/Tuffi 🏖️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/><path d="M12 2v1"/></svg> Spiaggia/Tuffi</span>
                     </div>
                 </div>
             </a>
@@ -329,7 +347,7 @@
                     <div class="place-card-media"><img src="images/deia/tiktok_7643479093844970785_4.jpg" alt="Deià" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Deià</h2>
-                        <p>Borgo 🏘️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 10a2 2 0 0 1 4 0v11"/></svg> Borgo</span>
                     </div>
                 </div>
             </a>
@@ -339,7 +357,7 @@
                     <div class="place-card-media"><img src="images/fornalutx/tiktok_7643479093844970785_9.jpg" alt="Fornalutx" loading="lazy"></div>
                     <div class="place-card-info">
                         <h2>Fornalutx</h2>
-                        <p>Borgo Storico 🏘️</p>
+                        <span class="category-tag"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 10a2 2 0 0 1 4 0v11"/></svg> Borgo Storico</span>
                     </div>
                 </div>
             </a>

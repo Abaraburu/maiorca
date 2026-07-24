@@ -22,17 +22,17 @@ def update_index():
         h2_match = re.search(r'<h2>.*?</h2>', card_inner, re.DOTALL)
         h2_html = h2_match.group(0) if h2_match else f'<h2>{place}</h2>'
 
-        # p matches (excluding comment-tag or keeping p tags)
-        p_matches = re.findall(r'<p.*?</p>', card_inner, re.DOTALL)
-        p_htmls = "\n                        ".join(p_matches)
+        # category matches (p or span.category-tag)
+        cat_matches = re.findall(r'<(?:p|span class="category-tag").*?</(?:p|span)>', card_inner, re.DOTALL)
+        cat_htmls = "\n                        ".join(cat_matches)
 
         if imgs:
             cover_path = f"images/{place}/{imgs[0]}"
             media_html = f'<div class="place-card-media"><img src="{cover_path}" alt="{place}" loading="lazy"></div>'
         else:
-            media_html = '<div class="place-card-media placeholder-media"><span style="font-size:2.5rem;">🏖️</span></div>'
+            media_html = '<div class="place-card-media placeholder-media"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/><circle cx="12" cy="7" r="4"/></svg></div>'
 
-        new_inner = f'''\n                    {badge_html}\n                    {media_html}\n                    <div class="place-card-info">\n                        {h2_html}\n                        {p_htmls}\n                    </div>\n                '''
+        new_inner = f'''\n                    {badge_html}\n                    {media_html}\n                    <div class="place-card-info">\n                        {h2_html}\n                        {cat_htmls}\n                    </div>\n                '''
 
         return f'{a_open}\n                <div class="place-card">{new_inner}</div>\n            </a>'
 
