@@ -143,7 +143,7 @@ def process_place(fname):
                 </div>
             </div>'''
 
-    new_content = re.sub(r'<div class="photo-gallery">.*?</div>\s*</div>\s*(?=\s*<div class="notes-section">|\s*</main>)', unified_section + '\n            ', content, flags=re.DOTALL)
+    new_content = re.sub(r'<div class="photo-gallery">.*?</div>\s*</div>\s*(?=\s*<div class="maps-section">|\s*<div class="notes-section">|\s*</main>)', unified_section + '\n            ', content, flags=re.DOTALL)
 
     with open(fname, 'w', encoding='utf-8') as f:
         f.write(new_content)
