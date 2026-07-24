@@ -21,23 +21,8 @@ def add_tiktok_search_buttons():
             encoded_query = urllib.parse.quote(title)
             search_url = f"https://www.tiktok.com/search?q={encoded_query}"
             
-            # Build Hero Search Action HTML
-            hero_btn_html = f'''<div class="hero-search-action">
-                <a href="{search_url}" target="_blank" rel="noopener noreferrer" class="tiktok-search-btn" title="Cerca {title} su TikTok">
-                    <svg class="search-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                    <svg class="tiktok-btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path {TIKTOK_SVG_PATH}/></svg>
-                    <span>Cerca "{title}" su TikTok</span>
-                    <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
-            </div>'''
-            
             # Remove existing hero-search-action if any
             content = re.sub(r'\s*<div class="hero-search-action">.*?</div>', '', content, flags=re.DOTALL)
-            
-            # Insert hero-search-action right after <span class="category-tag">...</span>
-            cat_pattern = r'(<span class="category-tag">.*?</span>)'
-            if re.search(cat_pattern, content, flags=re.DOTALL):
-                content = re.sub(cat_pattern, r'\1\n            ' + hero_btn_html, content, count=1, flags=re.DOTALL)
 
             
             # Build Secondary Gallery Search Button HTML
