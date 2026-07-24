@@ -50,75 +50,85 @@ def process_place(fname):
     with open(fname, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Extract all TikTok links
-    tiktok_links = re.findall(r'href="(https://[^\"]*tiktok\.com[^\"]*)"', content)
+    # Extract all TikTok links present in the content
+    tiktok_links = re.findall(r'href="(https://[^\"]*tiktok\.com/[^\"]*)"', content)
+    # Exclude search links
+    tiktok_links = [l for l in tiktok_links if '/search?' not in l]
     tiktok_links = list(dict.fromkeys(tiktok_links))
-
-    id_to_link = {}
-    for link in tiktok_links:
-        pid = re.search(r'/(?:photo|video)/(\d+)', link)
-        if pid:
-            id_to_link[pid.group(1)] = link
 
     existing_cards = []
     gallery_card_matches = re.findall(r'<div class="gallery-card">(.*?)</div>\s*(?=<div class="gallery-card">|</div>\s*</div>|\s*<div class="notes-section">|\s*</main>)', content, re.DOTALL)
     
     for card_str in gallery_card_matches:
         img_match = re.search(r'src="([^"]+)"', card_str)
-        cap_match = re.search(r'<div class="gallery-caption">(.*?)</div>', card_str, re.DOTALL)
+        href_match = re.search(r'href="(https://[^\"]*tiktok\.com/[^\"]*)"', card_str)
         
-        if img_match:
-            img_path = img_match.group(1)
-            caption = cap_match.group(1).strip() if cap_match else ""
-            if caption == 'Anteprima Video TikTok':
-                caption = ""
-            
+        img_path = img_match.group(1) if img_match else None
+        card_link = href_match.group(1) if href_match else None
+        
+        if not card_link and img_path:
             pid_in_img = re.search(r'(\d{15,})', img_path)
-            link = None
-            if pid_in_img and pid_in_img.group(1) in id_to_link:
-                link = id_to_link[pid_in_img.group(1)]
-            elif tiktok_links:
-                link = tiktok_links[0]
-                
+            if pid_in_img:
+                pid = pid_in_img.group(1)
+                for tlink in tiktok_links:
+                    if pid in tlink:
+                        card_link = tlink
+                        break
+        
+        if not card_link and tiktok_links:
+            card_link = tiktok_links[0]
+            
+        if img_path or card_link:
             existing_cards.append({
                 'img_path': img_path,
-                'caption': caption,
-                'link': link,
-                'is_video': False
+                'link': card_link,
+                'is_video': ('video_' in str(img_path)) or ('/video/' in str(card_link))
             })
 
-    processed_video_ids = set()
+    # Ensure EVERY tiktok_link has at least one card in existing_cards
     for link in tiktok_links:
-        video_match = re.search(r'/video/(\d+)', link)
-        if video_match:
-            vid = video_match.group(1)
-            processed_video_ids.add(vid)
-            already_has = any(vid in str(c['img_path']) for c in existing_cards)
-            if not already_has:
+        has_card = any(c['link'] and re.search(r'/(?:video|photo)/(\d+)', link).group(1) in c['link'] for c in existing_cards if re.search(r'/(?:video|photo)/(\d+)', link))
+        if not has_card:
+            vid_id_match = re.search(r'/(?:video|photo)/(\d+)', link)
+            vid_id = vid_id_match.group(1) if vid_id_match else ""
+            
+            # Try finding local thumbnail for video or photo
+            thumb = None
+            if '/video/' in link:
                 thumb = fetch_video_thumbnail(place, link)
-                existing_cards.append({
-                    'img_path': thumb,
-                    'caption': '',
-                    'link': link,
-                    'is_video': True
-                })
+            else:
+                img_dir = os.path.join('images', place)
+                if os.path.exists(img_dir):
+                    matches = [f"images/{place}/{img}" for img in sorted(os.listdir(img_dir)) if vid_id in img]
+                    if matches:
+                        thumb = matches[0]
+
+            existing_cards.append({
+                'img_path': thumb,
+                'link': link,
+                'is_video': '/video/' in link
+            })
 
     cards_html_list = []
+    seen_card_keys = set()
+
     for item in existing_cards:
         img_p = item['img_path']
-        cap = item['caption']
         link = item['link'] or (tiktok_links[0] if tiktok_links else "#")
-        is_vid = item['is_video'] or 'video_' in str(img_p)
+        is_vid = item['is_video']
+
+        card_key = (img_p, link)
+        if card_key in seen_card_keys:
+            continue
+        seen_card_keys.add(card_key)
 
         if img_p:
             overlay = PLAY_ICON_OVERLAY if is_vid else ''
-            media_html = f'<div class="gallery-media-wrap">{overlay}<img src="{img_p}" alt="{cap}" class="gallery-img lightbox-trigger" loading="lazy"></div>'
+            media_html = f'<div class="gallery-media-wrap">{overlay}<img src="{img_p}" alt="" class="gallery-img lightbox-trigger" loading="lazy"></div>'
         else:
             media_html = f'<div class="gallery-media-wrap video-placeholder">{PLAY_ICON_OVERLAY}</div>'
 
-        caption_html = ''
-        # BUTTON WITH TEXT AND SVG ICON
-        btn_html = f'<a href="{link}" target="_blank" class="tiktok-card-btn">Vai al TikTok {EXTERNAL_LINK_SVG}</a>'
+        btn_html = f'<a href="{link}" target="_blank" class="tiktok-card-btn" title="Apri su TikTok">Vai al TikTok {EXTERNAL_LINK_SVG}</a>'
 
         card_code = f'''
                 <div class="gallery-card">
@@ -137,7 +147,7 @@ def process_place(fname):
 
     with open(fname, 'w', encoding='utf-8') as f:
         f.write(new_content)
-    print(f"Aggiornata {fname} (senza scritte a parole sul tasto)")
+    print(f"Aggiornata {fname}")
 
 if __name__ == '__main__':
     for f in sorted(os.listdir('.')):

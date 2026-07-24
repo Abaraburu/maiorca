@@ -446,7 +446,16 @@ body {
     grid-column: 1 / -1;
 }
 
-/* Detail Page Header & Back Button */
+/* Detail Page Header & Top Nav */
+.detail-top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
 .back-link {
     display: inline-flex;
     align-items: center;
@@ -462,6 +471,10 @@ body {
     font-size: 0.95rem;
     box-shadow: var(--shadow-sm);
     transition: all 0.25s ease;
+}
+
+.detail-top-nav .back-link {
+    margin-bottom: 0;
 }
 
 .back-link:hover {
@@ -484,32 +497,37 @@ body {
 .place-details {
     background: #ffffff;
     border-radius: var(--radius-lg);
-    padding: 3rem;
+    padding: 2.25rem 2.5rem;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--card-border);
 }
 
+.place-details > p:first-child {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
 .detail-archive-action {
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1.5rem;
+    align-items: center;
+    margin-bottom: 0;
 }
 
 .detail-archive-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 16px;
+    padding: 0.65rem 1.3rem;
     border-radius: var(--radius-pill);
-    background: #f8fafc;
-    color: var(--text-main);
-    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: var(--primary-dark);
+    border: 1px solid #e2e8f0;
     font-family: inherit;
-    font-size: 0.88rem;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     box-shadow: var(--shadow-sm);
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 .detail-archive-btn .btn-svg-icon {
@@ -519,11 +537,11 @@ body {
 }
 
 .detail-archive-btn:hover {
-    background: var(--primary-color);
+    background: var(--primary-dark);
     color: #ffffff;
-    border-color: var(--primary-color);
+    border-color: var(--primary-dark);
     box-shadow: var(--shadow-md);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
 .detail-archive-btn.is-archived {
@@ -536,6 +554,7 @@ body {
     background: #10b981;
     color: #ffffff;
     border-color: #10b981;
+    transform: translateY(-2px);
 }
 
 .notes-section {
@@ -556,6 +575,11 @@ body {
 /* Gallery & Cards in Detail */
 .photo-gallery {
     margin-top: 2rem;
+}
+
+.place-details > .photo-gallery:first-child,
+.photo-gallery:first-child {
+    margin-top: 0;
 }
 
 .gallery-grid {
@@ -880,6 +904,9 @@ html, body {
         height: 12px;
     }
     /* Detail pages */
+    .detail-top-nav {
+        margin-bottom: 1.25rem;
+    }
     .place-details {
         padding: 1.2rem;
         border-radius: 16px;
@@ -888,6 +915,10 @@ html, body {
         padding: 0.55rem 1rem;
         font-size: 0.88rem;
         margin-bottom: 1.25rem;
+    }
+    .detail-archive-btn {
+        padding: 0.55rem 1rem;
+        font-size: 0.88rem;
     }
     .gallery-grid {
         grid-template-columns: 1fr;

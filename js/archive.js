@@ -259,18 +259,31 @@
 
     function initDetailPage() {
         const detailContainer = document.querySelector('.place-details');
-        if (!detailContainer) return;
+        const backLink = document.querySelector('.back-link');
+        if (!detailContainer && !backLink) return;
 
         const path = window.location.pathname;
         const pageName = path.substring(path.lastIndexOf('/') + 1);
         const placeId = pageName.replace('.html', '');
         if (!placeId || pageName === 'index.html') return;
 
-        let actionArea = detailContainer.querySelector('.detail-archive-action');
+        let topNav = document.querySelector('.detail-top-nav');
+        if (!topNav && backLink) {
+            topNav = document.createElement('div');
+            topNav.className = 'detail-top-nav';
+            backLink.parentNode.insertBefore(topNav, backLink);
+            topNav.appendChild(backLink);
+        }
+
+        let actionArea = topNav ? topNav.querySelector('.detail-archive-action') : document.querySelector('.detail-archive-action');
         if (!actionArea) {
             actionArea = document.createElement('div');
             actionArea.className = 'detail-archive-action';
-            detailContainer.insertBefore(actionArea, detailContainer.firstChild);
+            if (topNav) {
+                topNav.appendChild(actionArea);
+            } else if (detailContainer) {
+                detailContainer.parentNode.insertBefore(actionArea, detailContainer);
+            }
         }
 
         function renderDetailAction() {
